@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhang.api.dao.StudentDao">
+	<!-- 结果集 -->
+	<resultMap id="studentMap" type="com.zhang.api.model.Student">
+		<id column="student_id" property="student_id" />
+		<result column="phone" property="phone" />
+		<result column="nick_name" property="nick_name" />
+	</resultMap>
+
+	<select id="findAll" resultMap="studentMap" parameterType="com.zhang.api.model.Student">
+		select
+		student_id,
+		phone,
+		nick_name
+		from
+		z_student
+	</select>
+
+	<insert id="insertStudent" parameterType="com.zhang.api.model.Student"
+		useGeneratedKeys="true" keyProperty="student_id">
+		insert into
+		z_student(phone,nick_name)
+		values
+		(#{phone},#{nick_name})
+	</insert>
+
+	<select id="findById" resultMap="studentMap" parameterType="java.lang.Integer">
+		select
+		student_id,
+		phone,
+		nick_name
+		from
+		z_student
+		where
+		student_id = #{student_id}
+
+	</select>
+	<!-- 报错：Result Maps collection does not contain value for com.zhang.api.model.Student 
+		解决方法：将findById查询方法的 resultMap="com.zhang.api.model.Student" 改为 resultMap="studentMap" -->
+
+	<update id="updateStudent" parameterType="com.zhang.api.model.Student">
+		update
+		z_student
+		set
+		phone = #{phone},nick_name=#{nick_name}
+		where
+		student_id = #{student_id}
+	</update>
+
+	<delete id="deleteStudent" parameterType="java.lang.Integer">
+		delete from
+		z_student
+		where
+		student_id = #{student_id}
+	</delete>
+
+	<delete id="delteStudent2" parameterType="com.zhang.api.model.Student">
+		delete from
+		z_student
+		where
+		student_id = #{student_id}
+	</delete>
+
+</mapper>
