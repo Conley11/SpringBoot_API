@@ -1,16 +1,22 @@
 package com.zhang.api;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.zhang.api.model.Student;
+import com.zhang.api.web.StudentController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -31,7 +37,7 @@ public class StudentControllerTest {
     }
 */
 	
-	 /*private MockMvc mockMvc;
+	 private MockMvc mockMvc;
 	 @Autowired
      private StudentController stuController;
 	 
@@ -53,9 +59,9 @@ public class StudentControllerTest {
 		 
 		 String contentAsString = mvcResult.getResponse().getContentAsString();
 		 System.out.println(contentAsString);
-	 }*/
+	 }
 	 
-	 @Autowired
+	/* @Autowired
 	 private TestRestTemplate testRestTemplate;
 	 
 	 @Test
@@ -66,7 +72,7 @@ public class StudentControllerTest {
 		 
 		 actRes.getNick_name();
 		 System.out.println(actRes.getPhone());
-	 }
+	 }*/
 	 
 	 
 }
